@@ -39,10 +39,9 @@ fun View.bindLayoutFullscreen(previousFullscreen: Boolean = false, fullscreen: B
         View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
   }
 }
-
-fun View.applyWindowTopInsetAsMargin() {
-
-}
+//fun View.applyWindowTopInsetAsMargin() {
+//
+//}
 
 fun View.applyWindowTopInsetAsPadding() {
   applySystemWindowInsetsPadding(
@@ -54,6 +53,18 @@ fun View.applyWindowTopInsetAsPadding() {
     applyTop = true,
     applyRight = false,
     applyBottom = false
+  )
+}
+fun View.applyWindowTopAndBottomInsetAsPadding() {
+  applySystemWindowInsetsPadding(
+    previousApplyLeft = false,
+    previousApplyTop = false,
+    previousApplyRight = false,
+    previousApplyBottom = false,
+    applyLeft = false,
+    applyTop = true,
+    applyRight = false,
+    applyBottom = true
   )
 }
 

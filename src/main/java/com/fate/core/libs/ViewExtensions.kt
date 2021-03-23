@@ -1,9 +1,13 @@
 package com.fate.core.libs
 
+import android.animation.ValueAnimator
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
+import android.view.View.MeasureSpec
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
