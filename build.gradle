@@ -44,8 +44,9 @@ dependencies {
     implementation Libs.Coroutines.coroutines
     implementation Libs.Androidx.Lifecycle.common_java8
     implementation Libs.Androidx.Lifecycle.runtime
-    implementation Libs.Androidx.DataStore.data_store_core
     implementation Libs.Log.timber
     implementation Libs.TENCENT.mmkv
-
+    implementation Libs.Androidx.core
+    implementation Libs.Androidx.material
+    implementation Libs.Androidx.KTX.fragment
 }
