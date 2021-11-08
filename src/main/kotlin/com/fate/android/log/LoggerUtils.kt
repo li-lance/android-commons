@@ -1,30 +1,43 @@
 package com.fate.android.log
 
+import android.app.Application
 import timber.log.Timber
 
 object LoggerUtils {
   /** Log a verbose exception and a message that will be evaluated lazily when the message is printed */
-  @JvmStatic inline fun v(t: Throwable? = null, message: () -> String) = log { Timber.v(t, message()) }
+  @JvmStatic inline fun v(t: Throwable? = null, message: () -> String) =
+    log { Timber.v(t, message()) }
+
   @JvmStatic inline fun v(t: Throwable?) = Timber.v(t)
 
   /** Log a debug exception and a message that will be evaluated lazily when the message is printed */
-  @JvmStatic inline fun d(t: Throwable? = null, message: () -> String) = log { Timber.d(t, message()) }
+  @JvmStatic inline fun d(t: Throwable? = null, message: () -> String) =
+    log { Timber.d(t, message()) }
+
   @JvmStatic inline fun d(t: Throwable?) = Timber.d(t)
 
   /** Log an info exception and a message that will be evaluated lazily when the message is printed */
-  @JvmStatic inline fun i(t: Throwable? = null, message: () -> String) = log { Timber.i(t, message()) }
+  @JvmStatic inline fun i(t: Throwable? = null, message: () -> String) =
+    log { Timber.i(t, message()) }
+
   @JvmStatic inline fun i(t: Throwable?) = Timber.i(t)
 
   /** Log a warning exception and a message that will be evaluated lazily when the message is printed */
-  @JvmStatic inline fun w(t: Throwable? = null, message: () -> String) = log { Timber.w(t, message()) }
+  @JvmStatic inline fun w(t: Throwable? = null, message: () -> String) =
+    log { Timber.w(t, message()) }
+
   @JvmStatic inline fun w(t: Throwable?) = Timber.w(t)
 
   /** Log an error exception and a message that will be evaluated lazily when the message is printed */
-  @JvmStatic inline fun e(t: Throwable? = null, message: () -> String) = log { Timber.e(t, message()) }
+  @JvmStatic inline fun e(t: Throwable? = null, message: () -> String) =
+    log { Timber.e(t, message()) }
+
   @JvmStatic inline fun e(t: Throwable?) = Timber.e(t)
 
   /** Log an assert exception and a message that will be evaluated lazily when the message is printed */
-  @JvmStatic inline fun wtf(t: Throwable? = null, message: () -> String) = log { Timber.wtf(t, message()) }
+  @JvmStatic inline fun wtf(t: Throwable? = null, message: () -> String) =
+    log { Timber.wtf(t, message()) }
+
   @JvmStatic inline fun wtf(t: Throwable?) = Timber.wtf(t)
 
   // These functions just forward to the real timber. They aren't necessary, but they allow method
@@ -103,4 +116,10 @@ inline fun wtf(t: Throwable?) = Timber.wtf(t)
 @PublishedApi
 internal inline fun log(block: () -> Unit) {
   if (Timber.treeCount > 0) block()
+}
+
+fun Application.initLogger(debug: Boolean) {
+  if (debug) {
+    Timber.plant(Timber.DebugTree())
+  }
 }
